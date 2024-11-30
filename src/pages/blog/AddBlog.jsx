@@ -1,13 +1,14 @@
 import React from 'react'
-import { Navbar } from '../../components/Navbar'
 import Form from './components/Form'
+import Layout from '../../components/layout/Layout'
 
 
 const AddBlog = () => {
   return (
  <>
- <Navbar/>
+ <Layout>
  <Form title="New Blog" btnName="Create"/>
+ </Layout>
  </>
   )
 }

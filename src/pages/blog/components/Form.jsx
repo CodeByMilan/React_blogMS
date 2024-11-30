@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = (props) => {
     const{title,btnName}=props
+
+    
   return (
   <>
   <div className=" min-h-screen bg-gray-100 top-0 flex flex-col justify-center sm:py-12">

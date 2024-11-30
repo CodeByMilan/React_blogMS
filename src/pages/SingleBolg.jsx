@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
+import Layout from "../components/layout/Layout";
 
 const SingleBolg = () => {
   return (
     <>
-      <Navbar />
-
+      <Layout>
       <div
   className="flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white md:flex-row w-screen h-screen p-8 md:p-12 space-x-4">
   <img
@@ -37,6 +36,7 @@ const SingleBolg = () => {
   </div>
 </div>
 
+      </Layout>
     </>
   );
 };
