@@ -6,7 +6,7 @@ import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import AddBlog from './pages/blog/AddBlog';
 import EditBlog from './pages/blog/EditBlog';
-import SingleBolg from './pages/SingleBolg';
+import SingleBlog from './pages/SingleBlog';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/blog/add" element={<AddBlog />} />
         <Route path="/blog/edit/:id" element={<EditBlog/>}/>
-        <Route path="/blog/:id" element={<SingleBolg/>}/>
+        <Route path="/blog/:id" element={<SingleBlog/>}/>
       </Routes>
     </BrowserRouter>
     </>

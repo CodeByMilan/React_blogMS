@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 import axios from "axios";
 import { baseUrl } from "../Config";
 
-const SingleBolg = () => {
+const SingleBlog = () => {
   const {id} =useParams()
   const navigate=useNavigate()
   const [blog, setBlog] = useState({});
@@ -72,4 +72,4 @@ const SingleBolg = () => {
   );
 };
 
-export default SingleBolg;
+export default SingleBlog;
