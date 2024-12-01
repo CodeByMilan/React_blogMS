@@ -1,7 +1,28 @@
 import React, { useState } from 'react'
 
 const Form = (props) => {
-    const{title,btnName}=props
+    const{title,btnName,onSubmit}=props
+    const [data,setData]=useState({
+      title:'',
+       subtitle:'',
+      description:'',
+      category:'',
+      image:'',
+     
+    })
+    const handleChange=(e)=>{
+      const {name,value}=e.target
+      setData({
+        ...data,
+        [name]:name==='image'?e.target.files[0]:value
+
+      })
+
+    }
+    const handleSubmit=(e)=>{
+      e.preventDefault()
+      onSubmit(data)
+    }
 
     
   return (
@@ -17,24 +38,35 @@ const Form = (props) => {
             <p className="text-sm text-gray-500 font-normal leading-relaxed">create a new post then press create button</p>
           </div>
         </div>
-        <div className="divide-y divide-gray-200">
+       <form onSubmit={handleSubmit} encType='multipart/form-data'>
+       <div className="divide-y divide-gray-200">
           <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
             <div className="flex flex-col">
               <label className="leading-loose">Blog Title</label>
               <input type="text"
               name='title'
-              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Blog title" />
+              onChange={handleChange}
+              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Blog title" required/>
+            </div>
+            <div className="flex flex-col">
+              <label className="leading-loose">Blog SubTitle</label>
+              <input type="text"
+              name='subtitle'
+              onChange={handleChange}
+              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Blog title" required/>
             </div>
             <div className="flex flex-col">
               <label className="leading-loose">Category</label>
               <input type="text"
               name='category'
-              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="category" />
+              onChange={handleChange}
+              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="category" required/>
             </div>
             <div className="flex flex-col">
               <label className="leading-loose">Image</label>
               <input type="file" 
               name='image'
+              onChange={handleChange}
               className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Optional"/>
             </div>
 
@@ -42,8 +74,9 @@ const Form = (props) => {
               <label className="leading-loose">Blog Content</label>
               <textarea 
               rows="8"
-              name='content'
-              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="write content here "/>
+              name='description'
+              onChange={handleChange}
+              className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" required placeholder="write content here "/>
             </div>
           </div>
           <div className="pt-4 flex items-center space-x-4">
@@ -53,6 +86,7 @@ const Form = (props) => {
               <button className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">{btnName}</button>
           </div>
         </div>
+       </form>
       </div>
     </div>
   </div>

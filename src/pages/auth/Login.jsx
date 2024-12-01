@@ -3,13 +3,15 @@ import Form from "./components/Form";
 import { Navbar } from "../../components/navbar/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../Config";
 
 const Login = () => {
   const navigate =useNavigate()
-  const handleLogin=async ()=>{
+  const handleLogin=async (data)=>{
       try{
-        const response = await axios.post("baseurl/api/users/login",data)
+        const response = await axios.post(`${baseUrl}/login`,data)
         if (response.status==200){
+          localStorage.setItem("token",response.data.token)
           navigate("/")
         }
         else{

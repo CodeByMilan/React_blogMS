@@ -3,12 +3,13 @@ import Form from "./components/Form";
 import { Navbar } from "../../components/navbar/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../Config";
 
 const Register = () => {
   const navigate = useNavigate()
-  const handleRegister= async()=>{
+  const handleRegister= async(data)=>{
   try{
-    const response = await axios.post("baseurl/api/users/register",data)
+    const response = await axios.post(`${baseUrl}/register`,data)
     if (response.status==201){
       navigate("/login")
     }
@@ -16,6 +17,7 @@ const Register = () => {
       alert("Registration failed")
     }
   }catch(error){
+    console.log(error)
     alert(error?.response?.data?.message)
   }
 
